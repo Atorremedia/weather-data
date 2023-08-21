@@ -1,0 +1,19 @@
+
+
+.chartContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 14rem;
+    background-color: #c3c3c3;
+    border: 2px solid #000;
+    margin: 1rem;
+}
+.chartTitle {
+    margin-bottom: 0;
+}
+.svg {
+    overflow: visible;
+    margin: 1rem;
+}

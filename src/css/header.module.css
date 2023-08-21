@@ -1,0 +1,9 @@
+.headerContainer {
+    height: 4rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.headerContainer h1 {
+    font-size: 28px;
+}

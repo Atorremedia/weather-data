@@ -1,0 +1,21 @@
+.chartsContainer {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: .5rem;
+    justify-content: center;
+    height: 100vh;
+}
+.column {
+    background-color: blueviolet;
+}
+.columnTitle {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 35px;
+    color: whitesmoke;
+    margin-block: 0;
+}
+.column {
+    border: 2px solid #999
+}
