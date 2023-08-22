@@ -51,9 +51,9 @@
 .windUnits{
     font-size: 1.8rem;
 }
-.windArrow {
+/* .windArrow {
     transform: rotate(117deg)
-}
+} */
 .flexcolumn {
     flex-direction: column;
     border: none;

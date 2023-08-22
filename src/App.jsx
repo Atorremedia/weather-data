@@ -5,10 +5,10 @@ import Present from './components/Present'
 import CityDisplay from './components/CityDisplay'
 import Modal from './components/Modal'
 import './css/app.css'
-import useFetch from './assets/hooks/useFetch'
+import {useFetch} from './hooks/useFetch'
 
 const coord = {
-  Barcelona: [41.3888, 2.159],
+  'Barcelona': [41.3888, 2.159],
   'Madrid': [40.4165, -3.702],
   'Paris': [48.8534, 2.3488],
   'London': [51.4893, -0.144],
@@ -20,33 +20,41 @@ const coord = {
 function App() {
 
   const [coordinates, setCoordinates] = useState([])
-  const [data, setData] = useState()
   const [city, setCity] = useState('Barcelona')
   const [modal, setModal] = useState(false)
-
+  
+  const {data, loading} = useFetch(coord[city])
+  
   useEffect(()=>{
     setCoordinates(coord[city])
-  },[city])
+  },[city, data])
+
+  
 
 
-
-  useState(()=>{
-    setData(useFetch(city))
-  },[city])
 
   return (
     <>
       <Header />
-      <div className='weatherDisplay'>
       {modal &&
         (
-            <Modal  setModal={setModal} setCity={setCity} />
+          <Modal  setModal={setModal} setCity={setCity} />
         )
-        }
-        <Present data={data} />
-        <CityDisplay city={city} coordinates={coordinates} setModal={setModal} modal={modal}/>
+      }
+      {loading &&
+        (<h3>Loading...</h3>)
+      }
+      {data &&
+      (
+      <>
+      <div className='weatherDisplay'>
+        <Present data={data}/>
+        <CityDisplay city={city} coordinates={coordinates} setModal={setModal} modal={modal} data={data} />
       </div>
         <Charts data={data} />
+      </>
+      )
+      }
     </>
   )
 }

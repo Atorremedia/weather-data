@@ -2,16 +2,21 @@ import React, { useRef, useEffect, useState } from 'react'
 import styles from '../css/TempHumidity.module.css'
 import { select, line, curveCardinal, scaleLinear, scaleBand, axisBottom, axisRight, axisLeft } from 'd3'
 
-function TempHumidity() {
+function TempHumidity({data}) {
     
-    const [minTempData] = useState([22, 23, 22, 19, 21, 23, 22, 24])
-    const [maxTempData] = useState([28, 29, 29, 26, 27, 28, 27, 30])
-    const [humData] = useState([83, 76, 80, 86, 87, 76, 75, 82])
+    const [minTempData, setMinTempData] = useState([28.3, 26.5, 26.8, 25.7, 23.9, 23.2, 21.2])
+    const [maxTempData] = useState([32.2, 37.3, 33.5, 32.6, 33.5, 32.9, 24.6])
+    const [humData] = useState([76, 80, 86, 87, 76, 75, 82])
     const svgRef = useRef()
     
+    useEffect(() => {
+        if (data){setMinTempData(data['daily']['temperature_2m_min'])}
+    },[data])
+
 
     useEffect(() => {
 
+        console.log(minTempData)
         const height = 230
         const width = 450
         const background = '#d3d3d3'
@@ -90,7 +95,7 @@ function TempHumidity() {
 
         // Axis
 
-        let tickLabels = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday', 'Monday'] 
+        let tickLabels = ['Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday', 'Monday'] 
 
         const xScaleHumAxis = scaleBand()
         .domain(humData.map((value, index)=>index))

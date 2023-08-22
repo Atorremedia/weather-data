@@ -28,7 +28,7 @@ function Modal({setModal, setCity}) {
                         <option>Lisbon</option>
                         <option>Berlin</option>
                     </select>
-                    <button onClick={selectCity}>Close</button>
+                    <button onClick={selectCity}>Accept</button>
                 </form>
             </div> 
         </div>

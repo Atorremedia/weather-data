@@ -1,17 +1,16 @@
 import React, {useEffect, useState} from 'react'
 import styles from '../css/present.module.css'
 import {WiDaySunny, WiDirectionUp} from 'react-icons/wi'
-import Modal from './Modal'
-import useFetch from '../assets/hooks/useFetch'
-import CityDisplay from './CityDisplay'
 
 
 function Present({data}) {
     
+    const [temp, setTemp] = useState()
+
     useEffect(()=>{
 
         console.log(data)
-        // setData(useFetch(city))
+        setTemp(data['current_weather']['temperature'])
 
     },[data])
 
@@ -26,17 +25,14 @@ function Present({data}) {
                 </div>
                 <div className={styles.presentDataTag}>
                     <div className={styles.temperature} >
-                        32<span className={styles.tempUnits}> ºC</span>
-                    </div>
-                    <div className={styles.humidity} >
-                        74<span className={styles.humUnits}> %</span>
+                        {temp}<span className={styles.tempUnits}> ºC</span>
                     </div>
                     <div className={styles.windContainer} >
                         <div className={styles.windSpeed}>
-                            12<span className={styles.windUnits}> m/s</span>
+                            {data['current_weather']['windspeed']}<span className={styles.windUnits}> m/s</span>
                         </div>
-                        <div className={styles.windArrowContainer}>
-                            <WiDirectionUp className={styles.windArrow}/>
+                        <div className={styles.windArrowContainer} >
+                            <WiDirectionUp className={`${styles.windArrow} `}/>
                         </div>
                     </div>
                 </div>
@@ -46,3 +42,4 @@ function Present({data}) {
 }
 
 export default Present
+// data['current_weather']['winddirection'] + 

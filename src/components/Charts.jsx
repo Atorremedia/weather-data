@@ -17,8 +17,8 @@ function Charts({data}) {
         <h3  className={styles.columnTitle}>
           Last 8 days
         </h3>
-        <TempHumidity />
-        <Rainfall />
+        <TempHumidity data={data}/>
+        <Rainfall data={data}/>
       </div>
     </section>
   )

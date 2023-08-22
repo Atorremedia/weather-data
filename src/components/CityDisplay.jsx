@@ -4,8 +4,6 @@ import styles from '../css/citySelect.module.css'
 
 function CityDisplay({coordinates, setModal, modal, city}) {
 
-
-
 function clickHadle(){
   setModal(()=>!modal)
 }
